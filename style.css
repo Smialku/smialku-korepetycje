@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #1e293b;
+    color: #ffffff;
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+}
+
+/* NAWIGACJA W BANERZE */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: #334155;
+    color: #38bdf8;
+}
+
+/* KONTENERY */
+.container-wide {
+    max-width: 1250px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.container-narrow {
+    max-width: 850px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.intro-card {
+    text-align: center;
+}
+
+.intro-card h2 {
+    color: #0f172a;
+    margin-bottom: 0.8rem;
+}
+
+.intro-card p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+/* SIATKA KAFELKÓW (ZWIĘKSZONA) */
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+}
+
+/* STYL AKTYWNEGO KAFELKA */
+.topic-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    text-decoration: none;
+    color: #1e293b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 110px; /* Zwiększona wysokość */
+    transition: all 0.2s ease;
+}
+
+.topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: #38bdf8;
+    background-color: #f8fafc;
+}
+
+/* STYL WYSZARZONEGO (NIEAKTYWNEGO) KAFELKA */
+.topic-card.disabled {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    border-color: #e2e8f0;
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none; /* Blokuje klikalność */
+}
+
+.topic-title {
+    font-size: 1.05rem; /* Powiększony tekst na kafelku */
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.placeholder-box {
+    margin-top: 1rem;
+    padding: 2rem;
+    background-color: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    text-align: center;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* RESPONSYWNOŚĆ */
+@media (max-width: 1100px) {
+    .topics-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .topics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .topics-grid {
+        grid-template-columns: 1fr;
+    }
+}

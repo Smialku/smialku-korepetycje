@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funkcja Liniowa – Śmiałku Korepetycje</title>
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Śmiałku Korepetycje</h1>
+            <p>Materiały dydaktyczne, platforma wiedzy i analizy danych</p>
+            
+            <nav class="main-nav">
+                <a href="o-mnie.html">O mnie</a>
+                <a href="index.html" class="active">Materiały</a>
+                <a href="analizy.html">Analizy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container-narrow">
+
+        <div style="margin-bottom: 1.5rem;">
+            <a href="index.html" style="color: #38bdf8; text-decoration: none; font-weight: 600;">← Powrót do listy działów</a>
+        </div>
+
+        <!-- SEKCJA 1: WZÓR OGÓLNY -->
+        <section class="card">
+            <h2>1. Funkcja Liniowa – Wzór Ogólny</h2>
+            <div class="formula">y = ax + b</div>
+            <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                <li><strong>a (współczynnik kierunkowy)</strong> – decyduje o nachyleniu prostej do osi OX (czy funkcja jest rosnąca, malejąca czy stała).</li>
+                <li style="margin-top: 0.5rem;"><strong>b (wyraz wolny)</strong> – punkt przecięcia wykresu z osią OY, czyli punkt o współrzędnych <code>(0, b)</code>.</li>
+            </ul>
+        </section>
+
+        <!-- SEKCJA 2: WŁASNOŚCI PROSTYCH -->
+        <section class="card">
+            <h2>2. Własności Prostych</h2>
+            <div class="grid" style="margin-top: 1rem;">
+                <div class="sub-card">
+                    <h3>Proste Równoległe</h3>
+                    <p>Dwie proste są równoległe, gdy mają ten sam współczynnik kierunkowy:</p>
+                    <div class="formula-sm">a₁ = a₂</div>
+                </div>
+                <div class="sub-card">
+                    <h3>Proste Prostopadłe</h3>
+                    <p>Dwie proste są prostopadłe, gdy iloczyn ich współczynników wynosi -1:</p>
+                    <div class="formula-sm">a₁ · a₂ = -1</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA 3: WYZNACZANIE PROSTEJ -->
+        <section class="card">
+            <h2>3. Wyznaczanie Prostej Przez Dwa Punkty</h2>
+            <p style="margin-bottom: 1rem;">Mając punkty A = (x₁, y₁) oraz B = (x₂, y₂), wyznaczamy równanie prostej krok po kroku:</p>
+            <ol style="padding-left: 1.2rem; line-height: 1.8;">
+                <li>Podstawiamy współrzędne punktów A i B do wzoru <code>y = ax + b</code>.</li>
+                <li>Tworzymy i rozwiązujemy układ dwóch równań z niewiadomymi <code>a</code> oraz <code>b</code>.</li>
+                <li>Wyznaczamy współczynnik kierunkowy <code>a</code> korzystając z zależności:
+                    <div class="formula-sm">a = (y₂ - y₁) / (x₂ - x₁)</div>
+                </li>
+                <li>Podstawiamy obliczone <code>a</code> do jednego z punktów, aby wyznaczyć wyraz wolny <code>b</code>.</li>
+            </ol>
+        </section>
+
+        <!-- MIEJSCE NA ZADANIA -->
+        <section class="card intro-card">
+            <h3>Zadania Maturalne</h3>
+            <div class="placeholder-box">
+                📝 Zadania z funkcji liniowej – w przygotowaniu
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

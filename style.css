@@ -172,3 +172,31 @@ header p {
         grid-template-columns: 1fr;
     }
 }
+/* Styl dla wyróżnionych wzorów w ramce */
+.formula {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 2px solid #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    color: #1e293b; /* lub dopasuj do swojego koloru tekstu */
+}
+
+/* Układ 2-kolumnowy do kart */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/* Na telefonach automatycznie przechodzi w 1 kolumnę */
+@media (max-width: 600px) {
+    .grid-2-col {
+        grid-template-columns: 1fr;
+    }
+}

@@ -27,19 +27,260 @@
             <a href="index.html" style="color: #38bdf8; text-decoration: none; font-weight: 600;">← Powrót do listy działów</a>
         </div>
 
+        <!-- SEKCJA 1: POSTAĆ OGÓLNA -->
         <section class="card">
-            <h2>9. Funkcja Kwadratowa</h2>
+            <h2>1. Postać ogólna funkcji kwadratowej</h2>
+            
             <div class="formula">f(x) = ax² + bx + c</div>
-            <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                <li><strong>Wyróżnik (Δ):</strong> <code>Δ = b² - 4ac</code></li>
-                <li style="margin-top: 0.5rem;"><strong>Wierzchołek:</strong> <code>W = (p, q)</code>, gdzie <code>p = -b / (2a)</code>, <code>q = -Δ / (4a)</code></li>
-            </ul>
+
+            <p style="margin-top: 1rem; color: #0f172a; font-weight: 600;">Warunek konieczny: <strong>a ≠ 0</strong> <span style="font-weight: 500;">(gdyby a = 0, funkcja stałaby się liniowa)</span>.</p>
+
+            <div style="margin-top: 1.5rem; background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 1.2rem; border-radius: 0 8px 8px 0;">
+                <p style="margin-bottom: 0.8rem; font-weight: 700; font-size: 1.05rem; color: #0f172a;">Rozpiszmy to na konkretnym przykładzie:</p>
+                
+                <div class="formula-sm" style="margin: 1rem auto; font-size: 1.3rem; text-align: center; font-weight: bold;">f(x) = 3x² - 7x + 5</div>
+                
+                <ul style="padding-left: 1.2rem; line-height: 1.8; font-size: 1.05rem; color: #0f172a;">
+                    <li><strong>a = 3</strong> <span style="color: #dc2626; font-weight: 600; font-size: 0.95rem;">(Pamiętaj: współczynnik to <strong>sama liczba</strong> stojąca przy x², nigdy z x!)</span></li>
+                    <li><strong>b = -7</strong> <span style="color: #dc2626; font-weight: 600; font-size: 0.95rem;">(Zwróć uwagę na minus – znak należy do liczby)</span></li>
+                    <li><strong>c = 5</strong> <span style="font-weight: 600; font-size: 0.95rem;">(Wyraz wolny)</span></li>
+                </ul>
+            </div>
         </section>
 
+        <!-- SEKCJA 2: RAMIONA PARABOLI (A > 0 ORAZ A < 0) -->
+        <section class="card">
+            <h2>2. Kierunek ramion paraboli</h2>
+            <p style="margin-bottom: 1rem; color: #0f172a; font-weight: 500;"><strong>Współczynnik a</strong> decyduje o kształcie, szerokości oraz kierunku ramion paraboli:</p>
+            
+            <div class="grid-2-col" style="margin-top: 1.2rem;">
+                <!-- a > 0 -->
+                <div class="sub-card" style="text-align: center;">
+                    <h3 style="color: #2563eb; margin-bottom: 0.3rem; font-size: 1.2rem; font-weight: bold;">a > 0</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #0f172a; font-weight: 600;">Ramiona w górę (uśmiechnięta parabola)</p>
+                    <svg viewBox="0 0 200 160" width="100%" height="140" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+                            </marker>
+                        </defs>
+                        <line x1="20" y1="120" x2="180" y2="120" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <line x1="100" y1="145" x2="100" y2="15" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <path d="M 40 40 Q 100 160 160 40" fill="none" stroke="#2563eb" stroke-width="3"/>
+                        <circle cx="100" cy="100" r="4" fill="#dc2626"/>
+                        <text x="110" y="105" font-size="11" fill="#dc2626" font-weight="bold">W</text>
+                    </svg>
+                </div>
+
+                <!-- a < 0 -->
+                <div class="sub-card" style="text-align: center;">
+                    <h3 style="color: #dc2626; margin-bottom: 0.3rem; font-size: 1.2rem; font-weight: bold;">a < 0</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #0f172a; font-weight: 600;">Ramiona w dół (smutna parabola)</p>
+                    <svg viewBox="0 0 200 160" width="100%" height="140" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="20" y1="40" x2="180" y2="40" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <line x1="100" y1="15" x2="100" y2="145" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <path d="M 40 120 Q 100 0 160 120" fill="none" stroke="#dc2626" stroke-width="3"/>
+                        <circle cx="100" cy="60" r="4" fill="#dc2626"/>
+                        <text x="110" y="58" font-size="11" fill="#dc2626" font-weight="bold">W</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA 3: WYRÓŻNIK (DELTA) I MIEJSCA ZEROWE -->
+        <section class="card">
+            <h2>3. Wyróżnik funkcji kwadratowej (Δ)</h2>
+            
+            <!-- Wzór na deltę w ramce -->
+            <div class="formula">Δ = b² - 4ac</div>
+
+            <p style="margin-top: 1.5rem; color: #0f172a; font-weight: 600;">Liczba miejsc zerowych oraz ich wzory w zależności od znaku delty:</p>
+            
+            <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                
+                <!-- Delta > 0 -->
+                <div style="background: rgba(15, 23, 42, 0.02); padding: 1.2rem; border-radius: 12px; border: 2px solid #38bdf8;">
+                    <div style="font-weight: bold; color: #0284c7; margin-bottom: 0.8rem; font-size: 1.05rem;">Δ > 0 — Dwa miejsca zerowe</div>
+                    
+                    <div class="formula" style="margin: 0.5rem 0 1rem 0; font-size: 1.1rem; padding: 0.8rem;">
+                        x₁ = <span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:2px;">-b - √Δ</span><span>2a</span></span>
+                        &nbsp;&nbsp;&nbsp;oraz&nbsp;&nbsp;&nbsp;
+                        x₂ = <span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:2px;">-b + √Δ</span><span>2a</span></span>
+                    </div>
+
+                    <!-- Dwa wykresy obok siebie dla Delta > 0 -->
+                    <div style="text-align: center; margin-top: 0.8rem;">
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.3rem;">Wykres przecina oś OX w dwóch punktach:</p>
+                        <div class="grid-2-col">
+                            <div>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: #2563eb; margin: 0;">a > 0</p>
+                                <svg viewBox="0 0 200 130" width="100%" height="110" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="10" y1="90" x2="190" y2="90" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <line x1="100" y1="120" x2="100" y2="15" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <path d="M 40 30 Q 100 210 160 30" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                                    <circle cx="65" cy="90" r="3.5" fill="#dc2626"/>
+                                    <text x="58" y="108" font-size="10" fill="#dc2626" font-weight="bold">x₁</text>
+                                    <circle cx="135" cy="90" r="3.5" fill="#dc2626"/>
+                                    <text x="130" y="108" font-size="10" fill="#dc2626" font-weight="bold">x₂</text>
+                                </svg>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: #dc2626; margin: 0;">a < 0</p>
+                                <svg viewBox="0 0 200 130" width="100%" height="110" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="10" y1="60" x2="190" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <line x1="100" y1="15" x2="100" y2="120" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <path d="M 40 120 Q 100 -60 160 120" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+                                    <circle cx="65" cy="60" r="3.5" fill="#dc2626"/>
+                                    <text x="58" y="52" font-size="10" fill="#dc2626" font-weight="bold">x₁</text>
+                                    <circle cx="135" cy="60" r="3.5" fill="#dc2626"/>
+                                    <text x="130" y="52" font-size="10" fill="#dc2626" font-weight="bold">x₂</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delta = 0 -->
+                <div style="background: rgba(15, 23, 42, 0.02); padding: 1.2rem; border-radius: 12px; border: 2px solid #38bdf8;">
+                    <div style="font-weight: bold; color: #0284c7; margin-bottom: 0.8rem; font-size: 1.05rem;">Δ = 0 — Jedno miejsce zerowe</div>
+                    
+                    <div class="formula" style="margin: 0.5rem 0 1rem 0; font-size: 1.1rem; padding: 0.8rem;">
+                        x₀ = <span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:2px;">-b</span><span>2a</span></span>
+                    </div>
+
+                    <!-- Dwa wykresy obok siebie dla Delta = 0 -->
+                    <div style="text-align: center; margin-top: 0.8rem;">
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.3rem;">Wykres styka się z osią OX w jednym punkcie:</p>
+                        <div class="grid-2-col">
+                            <div>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: #2563eb; margin: 0;">a > 0</p>
+                                <svg viewBox="0 0 200 130" width="100%" height="110" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="10" y1="100" x2="190" y2="100" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <line x1="100" y1="120" x2="100" y2="15" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <path d="M 40 30 Q 100 170 160 30" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                                    <circle cx="100" cy="100" r="3.5" fill="#dc2626"/>
+                                    <text x="108" y="113" font-size="10" fill="#dc2626" font-weight="bold">x₀ (W)</text>
+                                </svg>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: #dc2626; margin: 0;">a < 0</p>
+                                <svg viewBox="0 0 200 130" width="100%" height="110" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="10" y1="30" x2="190" y2="30" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <line x1="100" y1="15" x2="100" y2="120" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <path d="M 40 100 Q 100 -40 160 100" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+                                    <circle cx="100" cy="30" r="3.5" fill="#dc2626"/>
+                                    <text x="108" y="24" font-size="10" fill="#dc2626" font-weight="bold">x₀ (W)</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delta < 0 -->
+                <div style="background: rgba(15, 23, 42, 0.02); padding: 1.2rem; border-radius: 12px; border: 2px solid #f87171;">
+                    <div style="font-weight: bold; color: #dc2626; margin-bottom: 0.5rem; font-size: 1.05rem;">Δ < 0 — Brak miejsc zerowych</div>
+                    <p style="font-size: 0.95rem; color: #0f172a; font-weight: 500; margin-bottom: 0.8rem;">Wykres nie przecina osi OX. Brak rozwiązań w zbiorze liczb rzeczywistych.</p>
+                    
+                    <!-- Dwa wykresy obok siebie dla Delta < 0 -->
+                    <div style="text-align: center; margin-top: 0.8rem;">
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.3rem;">Wykres unosi się nad osią OX lub leży całkowicie pod nią:</p>
+                        <div class="grid-2-col">
+                            <div>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: #2563eb; margin: 0;">a > 0 (nad osią)</p>
+                                <svg viewBox="0 0 200 130" width="100%" height="110" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="10" y1="110" x2="190" y2="110" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <line x1="100" y1="125" x2="100" y2="15" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <path d="M 40 50 Q 100 100 160 50" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                                    <circle cx="100" cy="75" r="3.5" fill="#dc2626"/>
+                                    <text x="108" y="73" font-size="10" fill="#dc2626" font-weight="bold">W</text>
+                                </svg>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: #dc2626; margin: 0;">a < 0 (pod osią)</p>
+                                <svg viewBox="0 0 200 130" width="100%" height="110" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="10" y1="20" x2="190" y2="20" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <line x1="100" y1="15" x2="100" y2="125" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+                                    <path d="M 40 80 Q 100 30 160 80" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+                                    <circle cx="100" cy="55" r="3.5" fill="#dc2626"/>
+                                    <text x="108" y="53" font-size="10" fill="#dc2626" font-weight="bold">W</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+<!-- SEKCJA 4: POSTAĆ KANONICZNA I WIERZCHOŁEK PARABOLI -->
+<section class="card">
+    <h2>4. Postać kanoniczna i wierzchołek paraboli</h2>
+    
+    <div class="formula">f(x) = a(x - p)² + q</div>
+
+    <ul style="margin-top: 1rem; padding-left: 1.2rem; line-height: 1.6; color: #0f172a;">
+        <li><strong>Wpływ nawiasu:</strong> Zauważ minusy wewnątrz nawiasu <code>(x - p)</code> – przy przechodzeniu ze wzoru do postaci kanonicznej <strong>zmieniamy znak</strong> współrzędnej p (np. jeśli p = 3, w nawiasie mamy (x - 3), a jeśli p = -2, mamy (x + 2)).</li>
+        <li style="margin-top: 0.5rem;"><strong>Zastosowanie:</strong> Postać kanoniczna pozwala „w ułamku sekundy” odczytać współrzędne wierzchołka paraboli W = (p, q).</li>
+    </ul>
+
+<!-- Wzory na p i q w pojedynczej ramce -->
+<p style="margin-top: 1.5rem; color: #0f172a; font-weight: 600;">Współrzędne wierzchołka W = (p, q) możemy również wyznaczyć ze wzorów:</p>
+
+<div class="formula" style="margin: 1rem 0; font-size: 1.1rem; padding: 0.8rem; text-align: center;">
+    p = <span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:2px;">-b</span><span>2a</span></span>
+    &nbsp;&nbsp;&nbsp;oraz&nbsp;&nbsp;&nbsp;
+    q = <span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:2px;">-Δ</span><span>4a</span></span>
+</div>
+
+    <!-- Wykres ilustrujący wierzchołek W(p, q) -->
+    <div style="text-align: center; margin-top: 1.5rem;">
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.3rem;">Geometryczna interpretacja wierzchołka W = (p, q):</p>
+        <svg viewBox="0 0 200 150" width="100%" height="130" xmlns="http://www.w3.org/2000/svg">
+            <!-- Oś X i Y -->
+            <line x1="15" y1="100" x2="185" y2="100" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <line x1="70" y1="135" x2="70" y2="15" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+            
+            <!-- Parabola przechodząca idealnie przez wierzchołek W(120, 120) -->
+            <path d="M 70 40 Q 120 200 165 40" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+            
+            <!-- Linie pomocnicze rzutujące wierzchołek na osie -->
+            <line x1="120" y1="100" x2="120" y2="120" stroke="#dc2626" stroke-dasharray="3,3" stroke-width="1"/>
+            <line x1="70" y1="120" x2="120" y2="120" stroke="#dc2626" stroke-dasharray="3,3" stroke-width="1"/>
+            
+            <!-- Kropka wierzchołka W(p, q) -->
+            <circle cx="120" cy="120" r="4" fill="#dc2626"/>
+            <text x="128" y="132" font-size="10" fill="#dc2626" font-weight="bold">W = (p, q)</text>
+            
+            <!-- Oznaczenia p na osi OX oraz q na osi OY -->
+            <text x="117" y="95" font-size="10" fill="#dc2626" font-weight="bold">p</text>
+            <text x="55" y="118" font-size="10" fill="#dc2626" font-weight="bold">q</text>
+        </svg>
+    </div>
+    
+    <!-- Przydatne własności i wzory maturalne -->
+    <div style="margin-top: 1.2rem; background: rgba(59, 130, 246, 0.05); padding: 1.1rem; border-radius: 10px; border-left: 4px solid #38bdf8;">
+        <p style="font-weight: 700; color: #0f172a; margin-bottom: 0.5rem; font-size: 0.95rem;">💡 Przydatne własności (wskazówki maturalne):</p>
+        
+        <p style="font-size: 0.95rem; color: #0f172a; margin-bottom: 0.5rem;">
+            <strong>Średnia miejsc zerowych:</strong> Jeśli funkcja ma dwa miejsca zerowe (Δ > 0), to współrzędna p leży dokładnie w połowie między nimi:
+        </p>
+        
+        <!-- Wzór na p w ramce -->
+        <div class="formula" style="margin: 0.6rem 0 1rem 0; font-size: 1.1rem; padding: 0.7rem; text-align: center;">
+            p = <span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:2px;">x₁ + x₂</span><span>2</span></span>
+        </div>
+
+        <p style="font-size: 0.95rem; color: #0f172a; margin: 0;">
+            <strong>Wartość q jako f(p):</strong> Współrzędną q wierzchołka możesz błyskawicznie obliczyć, podstawiając współrzędną p do wzoru funkcji: <strong>q = f(p)</strong>
+        </p>
+    </div>
+</section>
+
+        <!-- MIEJSCE NA ZADANIA -->
         <section class="card intro-card">
-            <h3>Materiały autorskie</h3>
+            <h3>Zadania Maturalne</h3>
             <div class="placeholder-box">
-                📝 Sekcja w przygotowaniu – wkrótce pojawią się autorskie zadania i przykłady.
+                📝 Zadania z funkcji kwadratowej – w przygotowaniu
             </div>
         </section>
 

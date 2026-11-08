@@ -35,34 +35,40 @@
 
             <div class="grid-2-col">
                 <div class="col-text">
-                    <ul style="padding-left: 1.2rem;">
-                        <li><strong>a (współczynnik kierunkowy)</strong> – decyduje o nachyleniu prostej do osi OX (czy funkcja jest rosnąca, malejąca czy stała).</li>
-                        <li style="margin-top: 0.8rem;"><strong>b (wyraz wolny)</strong> – punkt przecięcia wykresu z osią OY, czyli punkt o współrzędnych <code>(0, b)</code>.</li>
+                    <ul style="padding-left: 1.2rem; line-height: 1.7;">
+                        <li><strong>a (współczynnik kierunkowy)</strong> – decyduje o nachyleniu prostej do osi OX:
+                            <br>• <strong>a &gt; 0</strong> – funkcja rosnąca
+                            <br>• <strong>a &lt; 0</strong> – funkcja malejąca
+                            <br>• <strong>a = 0</strong> – funkcja stała
+                        </li>
+                        <li style="margin-top: 0.8rem;"><strong>b (wyraz wolny)</strong> – punkt przecięcia wykresu z osią OY: <code>(0, b)</code>.</li>
+                        <li style="margin-top: 0.8rem;"><strong>Miejsce zerowe:</strong> punkt przecięcia z osią OX:
+                            <div style="margin-top: 0.4rem; font-weight: bold;">
+                                x₀ = -<span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:1px;">b</span><span>a</span></span>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 
                 <div class="col-chart" style="text-align: center;">
                     <svg viewBox="0 0 240 220" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <!-- Grot strzałki dla osi -->
                             <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                                 <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
                             </marker>
                         </defs>
 
-                        <!-- Osie X i Y ze strzałkami -->
+                        <!-- Osie X i Y -->
                         <line x1="20" y1="150" x2="220" y2="150" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
                         <line x1="100" y1="205" x2="100" y2="20" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
                         
-                        <!-- Etykiety osi -->
                         <text x="220" y="170" font-size="13" fill="#64748b" font-weight="bold">X</text>
                         <text x="112" y="25" font-size="13" fill="#64748b" font-weight="bold">Y</text>
                         
-                        <!-- Punkt (0,0) -->
                         <circle cx="100" cy="150" r="3" fill="#94a3b8"/>
                         <text x="86" y="166" font-size="11" fill="#94a3b8">0</text>
 
-                        <!-- Wykres funkcji y = ax + b (przecina OX i OY) -->
+                        <!-- Wykres y = ax + b -->
                         <line x1="30" y1="185" x2="210" y2="45" stroke="#2563eb" stroke-width="3"/>
 
                         <!-- Punkt przecięcia OY: (0, b) -->
@@ -76,16 +82,74 @@
         <!-- SEKCJA 2: WŁASNOŚCI PROSTYCH -->
         <section class="card">
             <h2>2. Własności Prostych</h2>
+            
             <div class="grid" style="margin-top: 1rem;">
-                <div class="sub-card">
+                <!-- Proste Równoległe -->
+                <div class="sub-card" style="text-align: center;">
                     <h3>Proste Równoległe</h3>
-                    <p>Dwie proste są równoległe, gdy mają ten sam współczynnik kierunkowy:</p>
-                    <div class="formula-sm">a₁ = a₂</div>
+                    <p style="text-align: left; margin-bottom: 0.8rem;">Dwie proste są równoległe, gdy mają ten sam współczynnik kierunkowy:</p>
+                    
+                    <div class="formula" style="font-size: 1.2rem; padding: 0.6rem; margin-bottom: 1rem;">
+                        a₁ = a₂
+                    </div>
+
+                    <!-- Wykres prostych równoległych -->
+                    <svg viewBox="0 0 200 180" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arrow-par" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+                            </marker>
+                        </defs>
+                        <!-- Osie -->
+                        <line x1="15" y1="130" x2="185" y2="130" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow-par)"/>
+                        <line x1="85" y1="170" x2="85" y2="15" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow-par)"/>
+                        <text x="183" y="146" font-size="11" fill="#64748b" font-weight="bold">X</text>
+                        <text x="94" y="20" font-size="11" fill="#64748b" font-weight="bold">Y</text>
+                        
+                        <!-- Prosta 1 -->
+                        <line x1="25" y1="150" x2="165" y2="35" stroke="#2563eb" stroke-width="2.5"/>
+                        <text x="168" y="38" font-size="11" fill="#2563eb" font-weight="bold">k₁</text>
+
+                        <!-- Prosta 2 -->
+                        <line x1="45" y1="165" x2="175" y2="58" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="4,2"/>
+                        <text x="178" y="62" font-size="11" fill="#0284c7" font-weight="bold">k₂</text>
+                    </svg>
                 </div>
-                <div class="sub-card">
+
+                <!-- Proste Prostopadłe -->
+                <div class="sub-card" style="text-align: center;">
                     <h3>Proste Prostopadłe</h3>
-                    <p>Dwie proste są prostopadłe, gdy iloczyn ich współczynników wynosi -1:</p>
-                    <div class="formula-sm">a₁ · a₂ = -1</div>
+                    <p style="text-align: left; margin-bottom: 0.8rem;">Dwie proste są prostopadłe, gdy iloczyn ich współczynników wynosi -1:</p>
+                    
+                    <div class="formula" style="font-size: 1.2rem; padding: 0.6rem; margin-bottom: 1rem;">
+                        a₁ · a₂ = -1
+                    </div>
+
+                    <!-- Wykres prostych prostopadłych -->
+                    <svg viewBox="0 0 200 180" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arrow-perp" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+                            </marker>
+                        </defs>
+                        <!-- Osie -->
+                        <line x1="15" y1="130" x2="185" y2="130" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow-perp)"/>
+                        <line x1="90" y1="170" x2="90" y2="15" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow-perp)"/>
+                        <text x="183" y="146" font-size="11" fill="#64748b" font-weight="bold">X</text>
+                        <text x="99" y="20" font-size="11" fill="#64748b" font-weight="bold">Y</text>
+                        
+                        <!-- Prosta 1 (rosnąca) -->
+                        <line x1="25" y1="145" x2="165" y2="35" stroke="#2563eb" stroke-width="2.5"/>
+                        <text x="168" y="35" font-size="11" fill="#2563eb" font-weight="bold">k₁</text>
+
+                        <!-- Prosta 2 (malejąca - prostopadła) -->
+                        <line x1="35" y1="40" x2="155" y2="155" stroke="#dc2626" stroke-width="2.5"/>
+                        <text x="158" y="160" font-size="11" fill="#dc2626" font-weight="bold">k₂</text>
+
+                        <!-- Kąt prosty w punkcie przecięcia (95, 90) -->
+                        <path d="M 87,83.7 L 93.3,77.4 L 101.6,83.7" fill="none" stroke="#0f172a" stroke-width="1.2"/>
+                        <circle cx="94" cy="81.5" r="1.5" fill="#0f172a"/>
+                    </svg>
                 </div>
             </div>
         </section>
@@ -95,22 +159,231 @@
             <h2>3. Wyznaczanie Prostej Przez Dwa Punkty</h2>
             <p style="margin-bottom: 1rem;">Mając punkty A = (x₁, y₁) oraz B = (x₂, y₂), wyznaczamy równanie prostej krok po kroku:</p>
             <ol style="padding-left: 1.2rem; line-height: 1.8;">
-                <li>Podstawiamy współrzędne punktów A i B do wzoru <code>y = ax + b</code>.</li>
-                <li>Tworzymy i rozwiązujemy układ dwóch równań z niewiadomymi <code>a</code> oraz <code>b</code>.</li>
-                <li>Wyznaczamy współczynnik kierunkowy <code>a</code> korzystając z zależności:
-                    <div class="formula-sm">a = (y₂ - y₁) / (x₂ - x₁)</div>
+                <li>Podstawiamy współrzędne punktów A i B do wzoru <code>y = ax + b</code> i rozwiązujemy układ dwóch równań z niewiadomymi <code>a</code> oraz <code>b</code>.</li>
+                <li>Możemy również bezpośrednio obliczyć współczynnik kierunkowy <code>a</code> ze wzoru:
+                    <div class="formula-sm" style="margin: 0.6rem 0; font-size: 1.1rem; text-align: center;">
+                        a = <span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:1px;">y₂ - y₁</span><span>x₂ - x₁</span></span>
+                    </div>
                 </li>
-                <li>Podstawiamy obliczone <code>a</code> do jednego z punktów, aby wyznaczyć wyraz wolny <code>b</code>.</li>
+                <li>Podstawiamy obliczone <code>a</code> oraz współrzędne jednego z punktów do wzoru, aby wyznaczyć wyraz wolny <code>b</code>.</li>
             </ol>
         </section>
 
-        <!-- MIEJSCE NA ZADANIA -->
-        <section class="card intro-card">
-            <h3>Zadania Maturalne</h3>
-            <div class="placeholder-box">
-                📝 Zadania z funkcji liniowej – w przygotowaniu
+        <!-- ======================================================= -->
+        <!-- ZESTAW ZADAŃ: FUNKCJA LINIOWA                            -->
+        <!-- ======================================================= -->
+        <div style="margin-top: 2.5rem; border-top: 2px solid #e2e8f0; padding-top: 2rem;">
+
+            <h2 style="color: #0f172a; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Zadania treningowe: Funkcja Liniowa</h2>
+
+            <!-- POZIOM PODSTAWOWY -->
+            <div style="background: rgba(59, 130, 246, 0.03); border: 2px solid #38bdf8; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+                <h3 style="color: #0284c7; margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span>📘</span> Poziom Podstawowy
+                </h3>
+
+                <!-- ETAP 1 -->
+                <div style="margin-bottom: 1.8rem; background: #ffffff; padding: 1.2rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #0f172a; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid #cbd5e1; padding-bottom: 0.5rem;">
+                        Etap 1: Podstawy algebry i własności funkcji
+                    </h4>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 1.1 (Wyznaczanie wzoru prostej)</p>
+                        <p style="margin: 0; color: #334155;">Wyznacz równanie prostej przechodzącej przez punkty A(-1, 2) oraz B(2, 8).</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 1.2 (Miejsce zerowe)</p>
+                        <p style="margin: 0; color: #334155;">Oblicz miejsce zerowe funkcji liniowej f(x) = √3(x + 1) - 12.</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 1.3 (Monotoniczność z parametrem)</p>
+                        <p style="margin: 0; color: #334155;">Wyznacz wszystkie wartości parametru m, dla których funkcja liniowa f(x) = (m - 1)x + 6 jest rosnąca.</p>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 1.4 (Punkt przecięcia z osią OY)</p>
+                        <p style="margin: 0; color: #334155;">Prosta o równaniu y = -2x + (3m + 3) przecina oś OY w punkcie (0, 2). Oblicz wartość parametru m.</p>
+                    </div>
+                </div>
+
+                <!-- ETAP 2 -->
+                <div style="margin-bottom: 1.8rem; background: #ffffff; padding: 1.2rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #0f172a; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid #cbd5e1; padding-bottom: 0.5rem;">
+                        Etap 2: Równoległość, prostopadłość i układy równań
+                    </h4>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 2.1 (Prosta równoległa)</p>
+                        <p style="margin: 0; color: #334155;">Wyznacz równanie prostej k przechodzącej przez punkt P(-2, 1) i równoległej do prostej l: y = 2x - 3.</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 2.2 (Prosta prostopadła)</p>
+                        <p style="margin: 0; color: #334155;">
+                            Wyznacz równanie prostej m przechodzącej przez punkt A(4, -3) i prostopadłej do prostej l: y = -<span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:1px;">7</span><span>3</span></span>x + 7.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 2.3 (Równoległość z parametrem)</p>
+                        <p style="margin: 0; color: #334155;">Wyznacz wartość parametru m, dla której proste y = (m² - 1)x + 3 oraz y = (4m - 4)x - 3 są równoległe.</p>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 2.4 (Układ równań)</p>
+                        <p style="margin: 0; color: #334155;">Rozwiąż układ równań <strong>{-x + 2y = 1, 2x + 3y = -6}</strong> i podaj jego interpretację geometryczną na płaszczyźnie.</p>
+                    </div>
+                </div>
+
+                <!-- ETAP 3 -->
+                <div style="margin-bottom: 1.8rem; background: #ffffff; padding: 1.2rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #0f172a; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid #cbd5e1; padding-bottom: 0.5rem;">
+                        Etap 3: Geometria analityczna i pola figur
+                    </h4>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 3.1 (Pole trójkąta z osiami)</p>
+                        <p style="margin: 0; color: #334155;">
+                            Proste y = <span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:1px;">3</span><span>2</span></span>x - 6 oraz y = ax + 3 przecinają się w punkcie leżącym na osi OX. Oblicz pole trójkąta ograniczonego tymi prostymi oraz osią OY.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 3.2 (Pole trójkąta utworzonego przez dwie proste i oś OX)</p>
+                        <p style="margin: 0; color: #334155;">
+                            Wyznacz punkt przecięcia prostych k: y = 2x + 4 oraz l: y = -x + 7. Oblicz pole trójkąta ograniczonego tymi prostymi oraz osią OX.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 3.3 (Długość odcinka i symetralna)</p>
+                        <p style="margin: 0; color: #334155;">
+                            Dane są punkty A(-3, 1) oraz B(5, 5). Oblicz długość odcinka AB oraz wyznacz równanie symetralnej tego odcinka.
+                        </p>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 3.4 (Pole obszaru ograniczonego prostą i układem współrzędnych)</p>
+                        <p style="margin: 0; color: #334155;">
+                            Prosta k o równaniu y = -<span style="display:inline-block; text-align:center; vertical-align:middle;"><span style="border-bottom:1px solid #0f172a; display:block; padding-bottom:1px;">4</span><span>3</span></span>x + 8 przecina oś OX w punkcie A, a oś OY w punkcie B. Oblicz pole trójkąta ABO (gdzie O jest początkiem układu współrzędnych) oraz odległość punktu O od prostej k.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ETAP 4 -->
+                <div style="background: #ffffff; padding: 1.2rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #0f172a; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid #cbd5e1; padding-bottom: 0.5rem;">
+                        Etap 4: Zadania testowe z treścią — zastosowania w praktyce
+                    </h4>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 4.1 (Porównanie ofert)</p>
+                        <p style="margin: 0 0 0.5rem 0; color: #334155;">Firma kurierska oferuje dwa warianty dostawy przesyłek:</p>
+                        <ul style="margin: 0 0 0.5rem 0; padding-left: 1.2rem; color: #334155;">
+                            <li>Wariant A: opłata stała 12 zł oraz 2 zł za każdy kilogram paczki.</li>
+                            <li>Wariant B: opłata stała 6 zł oraz 3 zł za każdy kilogram paczki.</li>
+                        </ul>
+                        <p style="margin: 0 0 0.5rem 0; color: #0f172a; font-weight: 500;">Dla jakiej masy paczki koszt dostawy w obu wariantach jest taki sam?</p>
+                        <div style="display: flex; gap: 1.5rem; color: #334155; font-weight: 600;">
+                            <span>A. 4 kg</span>
+                            <span>B. 5 kg</span>
+                            <span>C. 6 kg</span>
+                            <span>D. 8 kg</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 4.2 (Prędkość średnia)</p>
+                        <p style="margin: 0 0 0.5rem 0; color: #334155;">Samochód pokonał pierwszą połowę trasy ze średnią prędkością 40 km/h, a drugą połowę z prędkością 60 km/h. Średnia prędkość samochodu na całej trasie wynosiła:</p>
+                        <div style="display: flex; gap: 1.5rem; color: #334155; font-weight: 600;">
+                            <span>A. 48 km/h</span>
+                            <span>B. 50 km/h</span>
+                            <span>C. 52 km/h</span>
+                            <span>D. 55 km/h</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 4.3 (Zysk i produkcja)</p>
+                        <p style="margin: 0 0 0.5rem 0; color: #334155;">Produkcja x sztuk towaru wiąże się z kosztami K(x) = 25x + 1500, a przychód ze sprzedaży wynosi P(x) = 120x. Zysk Z(x) = P(x) - K(x) będzie większy niż 2000 zł dla x spełniającego warunek:</p>
+                        <div style="display: flex; gap: 1.5rem; color: #334155; font-weight: 600;">
+                            <span>A. x &gt; 30</span>
+                            <span>B. x &gt; 36</span>
+                            <span>C. x &gt; 40</span>
+                            <span>D. x &gt; 50</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+
+            <!-- POZIOM ROZSZERZONY -->
+            <div style="background: rgba(124, 58, 237, 0.03); border: 2px solid #a78bfa; border-radius: 12px; padding: 1.5rem;">
+                <h3 style="color: #6d28d9; margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span>🎓</span> Poziom Rozszerzony
+                </h3>
+
+                <!-- ETAP 5 -->
+                <div style="margin-bottom: 1.8rem; background: #ffffff; padding: 1.2rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #0f172a; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid #cbd5e1; padding-bottom: 0.5rem;">
+                        Etap 5: Układy nierówności i punkty kratowe
+                    </h4>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 5.1 (Półpłaszczyzna)</p>
+                        <p style="margin: 0; color: #334155;">Zapisz nierówność opisującą półpłaszczyznę zawartą w I, II i IV ćwiartce, której brzegiem jest prosta przechodząca przez punkty (2,0) i (0,4).</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 5.2 (Zliczanie punktów całkowitych)</p>
+                        <p style="margin: 0 0 0.5rem 0; color: #334155;">Trójkąt jest opisany układem nierówności:</p>
+                        <div class="formula" style="margin: 0.5rem 0; padding: 0.6rem; font-size: 1rem; text-align: center;">
+                            { x ≤ 0 &nbsp;;&nbsp; x - 2y + 6 ≥ 0 &nbsp;;&nbsp; x + 3y + 6 ≥ 0 }
+                        </div>
+                        <p style="margin: 0.5rem 0 0 0; color: #334155;">Wyznacz liczbę punktów o obu współrzędnych całkowitych leżących wewnątrz lub na brzegu tego trójkąta.</p>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 5.3 (Układ nierówności czworokąta)</p>
+                        <p style="margin: 0; color: #334155;">Napisz układ nierówności opisujący obszar czworokąta o wierzchołkach A(2, -2), B(5, 1), C(2, 4), D(-1, -1).</p>
+                    </div>
+                </div>
+
+                <!-- ETAP 6 -->
+                <div style="background: #ffffff; padding: 1.2rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #0f172a; margin-top: 0; font-size: 1.1rem; border-bottom: 1px solid #cbd5e1; padding-bottom: 0.5rem;">
+                        Etap 6: Badanie równań i funkcji z parametrem
+                    </h4>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 6.1 (Dyskusja liczby rozwiązań)</p>
+                        <p style="margin: 0 0 0.5rem 0; color: #334155;">Dla jakich wartości parametrów m i n układ równań:</p>
+                        <div class="formula" style="margin: 0.5rem 0; padding: 0.6rem; font-size: 1rem; text-align: center;">
+                            { 2x - my = 1 &nbsp;;&nbsp; x + 4y = n }
+                        </div>
+                        <p style="margin: 0.5rem 0 0 0; color: #334155;">jest: <strong>a)</strong> oznaczony, <strong>b)</strong> nieoznaczony, <strong>c)</strong> sprzeczny?</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 6.2 (Monotoniczność z modułem)</p>
+                        <p style="margin: 0; color: #334155;">Określ monotoniczność funkcji f(x) = (4 - 2|m|)x - 7 w zależności od wartości parametru m.</p>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem;">
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 6.3 (Warunek prostopadłości z kwadratem parametru)</p>
+                        <p style="margin: 0; color: #334155;">Wyznacz wszystkie wartości parametru m, dla których prosta y = (m² - 1)x - 2m jest prostopadła do prostej przechodzącej przez punkty A(16, -36) i B(-8, -42).</p>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600; color: #0f172a; margin-bottom: 0.3rem;">Zadanie 6.4 (Miejsce zerowe w przedziale)</p>
+                        <p style="margin: 0; color: #334155;">Oblicz wszystkie wartości parametru m, dla których miejsce zerowe funkcji f(x) = mx - 2x + 4 - m² należy do przedziału ⟨1, 4⟩.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </main>
 

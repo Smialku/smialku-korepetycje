@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Nauczyciela – Wyniki Quizów</title>
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Śmiałku Korepetycje</h1>
+            <p>Panel Nauczyciela – Wyniki uczniów</p>
+        </div>
+    </header>
+
+    <main class="container-narrow">
+        
+        <!-- LOGOWANIE -->
+        <section class="card" id="login-box" style="text-align: center; max-width: 400px; margin: 2rem auto;">
+            <h2>🔒 Dostęp zastrzeżony</h2>
+            <p>Podaj hasło nauczyciela, aby wczytać wyniki:</p>
+            <input type="password" id="admin-pass" placeholder="Hasło" style="width: 100%; padding: 0.7rem; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 1rem; box-sizing: border-box;">
+            <button onclick="checkPass()" style="background: #0284c7; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Zaloguj</button>
+            <p id="pass-err" style="color: #dc2626; display: none; margin-top: 0.5rem;">Błędne hasło!</p>
+        </section>
+
+        <!-- TABELA WYNIKÓW -->
+        <section class="card" id="results-box" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h2 style="margin: 0;">📊 Wyniki uczniów</h2>
+                <button onclick="loadResults()" style="background: #38bdf8; color: #0f172a; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer;">🔄 Odśwież</button>
+            </div>
+            
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
+                    <thead>
+                        <tr style="background: #0f172a; color: white;">
+                            <th style="padding: 0.7rem;">Data</th>
+                            <th style="padding: 0.7rem;">Uczeń</th>
+                            <th style="padding: 0.7rem;">Dział</th>
+                            <th style="padding: 0.7rem;">Wynik</th>
+                            <th style="padding: 0.7rem;">Czas</th>
+                            <th style="padding: 0.7rem;">Odpowiedzi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-tbody">
+                        <tr><td colspan="6" style="padding: 1rem; text-align: center;">Ładowanie danych...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbxtTXVCldY14bo9gzYRpexWPvauqlViFQBbZ0_GYrtyAhl5JXK9xFBg12fQ09k9mm4W/exec";
+        const HASLO = "Smialku2026"; // <-- Zmień na własne hasło
+
+        function checkPass() {
+            const p = document.getElementById("admin-pass").value;
+            if (p === HASLO) {
+                document.getElementById("login-box").style.display = "none";
+                document.getElementById("results-box").style.display = "block";
+                loadResults();
+            } else {
+                document.getElementById("pass-err").style.display = "block";
+            }
+        }
+
+        function loadResults() {
+            const tbody = document.getElementById("results-tbody");
+            tbody.innerHTML = '<tr><td colspan="6" style="padding: 1rem; text-align: center;">Pobieranie wyników...</td></tr>';
+
+            fetch(API_URL)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="6" style="padding: 1rem; text-align: center;">Brak zapisanych wyników.</td></tr>';
+                        return;
+                    }
+                    // Odwracamy kolejność, żeby najnowsze wyniki były na górze
+                    tbody.innerHTML = data.reverse().map(row => `
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.6rem;">${row.data}</td>
+                            <td style="padding: 0.6rem; font-weight: 600;">${row.uczen}</td>
+                            <td style="padding: 0.6rem;">${row.dzial}</td>
+                            <td style="padding: 0.6rem; font-weight: 700; color: #0284c7;">${row.wynik}</td>
+                            <td style="padding: 0.6rem;">${row.czas}</td>
+                            <td style="padding: 0.6rem; font-size: 0.82rem; color: #475569;">${row.szczegoly}</td>
+                        </tr>
+                    `).join("");
+                })
+                .catch(() => {
+                    tbody.innerHTML = '<tr><td colspan="6" style="padding: 1rem; color: #dc2626; text-align: center;">Błąd pobierania danych. Sprawdź URL Apps Script.</td></tr>';
+                });
+        }
+    </script>
+
+</body>
+</html>

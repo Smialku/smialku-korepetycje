@@ -30,20 +30,288 @@
         <section class="card">
             <h2>13. Trygonometria</h2>
             <div class="formula">sin²α + cos²α = 1</div>
-            <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                <li><code>tgα = sinα / cosα</code> (dla cosα ≠ 0)</li>
-                <li style="margin-top: 0.5rem;">Twierdzenie sinusów i cosinusów.</li>
-            </ul>
+            <div class="formula">tgα = sinα / cosα</div>
+            
         </section>
 
-        <section class="card intro-card">
-            <h3>Materiały autorskie</h3>
-            <div class="placeholder-box">
-                📝 Sekcja w przygotowaniu.
+        <!-- ======================================================= -->
+        <!-- AUTONOMICZNY QUIZ: TRYGONOMETRIA (10 ZADAŃ / 20 MIN)     -->
+        <!-- ======================================================= -->
+        <section class="card" id="quiz-section" style="margin-top: 2rem; border: 2px solid #0284c7;">
+            
+            <!-- EKRAN 1: STARTOWY -->
+            <div id="quiz-start" style="text-align: center; padding: 1rem;">
+                <div style="display: inline-block; background: #fef3c7; color: #b45309; border: 1px solid #f59e0b; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.6rem; text-transform: uppercase;">
+                    🚧 Wersja Beta
+                </div>
+                <h2 style="color: #0284c7; margin-top: 0;">📝 Quiz sprawdzający: Trygonometria</h2>
+                <p style="color: #334155; max-width: 600px; margin: 0.8rem auto; line-height: 1.6;">
+                    Test sprawdza, jak dobrze przyswoiłeś materiał z ostatnich zajęć (trójkąt prostokątny, jedynka trygonometryczna, kąty rozwarte, prosta i pole trójkąta).
+                </p>
+
+                <!-- Informacje o teście -->
+                <div style="background: #f1f5f9; padding: 1rem; border-radius: 8px; max-width: 480px; margin: 1.2rem auto; text-align: left; font-size: 0.95rem; color: #0f172a;">
+                    <p style="margin: 0.3rem 0;">⏱️ <strong>Czas na rozwiązanie:</strong> 20 minut</p>
+                    <p style="margin: 0.3rem 0;">📊 <strong>Liczba zadań:</strong> 10 (zamknięte ABCD oraz wpisanie ułamka/liczby)</p>
+                    <p style="margin: 0.3rem 0;">⚠️ <strong>Uwaga:</strong> Po upływie czasu quiz zakończy się automatycznie.</p>
+                </div>
+
+                <!-- Plan działania dla ucznia -->
+                <div style="background: #eff6ff; border-left: 4px solid #0284c7; padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; max-width: 480px; margin: 1.2rem auto; text-align: left; font-size: 0.95rem; color: #0f172a;">
+                    <p style="margin: 0 0 0.5rem 0; font-weight: 700; color: #0369a1;">📋 Plan działania przed startem:</p>
+                    <ol style="margin: 0; padding-left: 1.3rem; line-height: 1.6; color: #334155;">
+                        <li>Przygotuj <strong>czystą kartkę i długopis</strong> do obliczeń pomocniczych.</li>
+                        <li>Otwórz lub połóż obok <strong>Wybrane wzory matematyczne CKE</strong> (dział Trygonometria).</li>
+                        <li>Zadbaj o spokój przez najbliższe 20 minut — licznika nie da się zatrzymać.</li>
+                        <li>Wpisz swoje dane poniżej i kliknij start.</li>
+                    </ol>
+                </div>
+
+                <div style="margin: 1.5rem auto; max-width: 320px;">
+                    <label for="student-name" style="display: block; font-weight: 600; margin-bottom: 0.4rem; color: #0f172a;">Wpisz swoje imię i nazwisko:</label>
+                    <input type="text" id="student-name" placeholder="np. Jan Kowalski" style="width: 100%; padding: 0.7rem; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                    <p id="name-error" style="color: #dc2626; font-size: 0.85rem; display: none; margin-top: 0.4rem;">Podaj imię i nazwisko przed rozpoczęciem!</p>
+                </div>
+
+                <button onclick="startQuiz()" style="background: #0284c7; color: white; border: none; padding: 0.8rem 2rem; font-size: 1.05rem; font-weight: 600; border-radius: 8px; cursor: pointer;">
+                    Rozpocznij quiz
+                </button>
             </div>
+
+            <!-- EKRAN 2: PYTANIA I TIMER -->
+            <div id="quiz-body" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; margin-bottom: 1.5rem; position: sticky; top: 10px; z-index: 10;">
+                    <span id="display-student" style="font-weight: 600;">Uczeń: -</span>
+                    <span style="font-size: 1.1rem; font-weight: 700; color: #38bdf8;">⏱️ Pozostały czas: <span id="timer">20:00</span></span>
+                </div>
+
+                <div id="questions-container"></div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="finishQuiz()" style="background: #16a34a; color: white; border: none; padding: 0.9rem 2.2rem; font-size: 1.1rem; font-weight: 600; border-radius: 8px; cursor: pointer;">
+                        Zakończ i wyślij odpowiedzi
+                    </button>
+                </div>
+            </div>
+
+            <!-- EKRAN 3: PODSUMOWANIE -->
+            <div id="quiz-result" style="display: none; text-align: center; padding: 1.5rem;">
+                <h2 style="color: #0f172a; margin-top: 0;">Quiz zakończony!</h2>
+                <p id="result-score" style="font-size: 1.5rem; font-weight: 700; color: #0284c7; margin: 1rem 0;"></p>
+                <p id="save-status" style="color: #64748b; font-size: 0.95rem;">Zapisywanie wyniku...</p>
+                <div id="result-review" style="text-align: left; margin-top: 1.5rem;"></div>
+            </div>
+
         </section>
 
     </main>
+
+    <style>
+        .q-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; margin-bottom: 1.2rem; }
+        .q-title { font-weight: 600; color: #0f172a; margin-bottom: 0.8rem; }
+        .opt-label { display: block; padding: 0.5rem 0.8rem; margin: 0.3rem 0; background: white; border: 1px solid #cbd5e1; border-radius: 6px; cursor: pointer; }
+        .opt-label:hover { background: #e0f2fe; border-color: #38bdf8; }
+        .frac-input-wrap { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin-left: 0.5rem; }
+        .frac-input-wrap input { width: 65px; text-align: center; padding: 0.3rem; border: 2px solid #94a3b8; border-radius: 4px; font-weight: bold; font-size: 1rem; }
+        .frac-line { width: 75px; height: 2px; background: #0f172a; margin: 4px 0; }
+        .num-input { width: 90px; padding: 0.4rem; border: 2px solid #94a3b8; border-radius: 6px; font-size: 1rem; font-weight: bold; text-align: center; }
+        .u-frac { display: inline-block; text-align: center; vertical-align: middle; margin: 0 2px; }
+        .u-frac span:first-child { border-bottom: 1px solid currentColor; display: block; padding: 0 2px; line-height: 1.1; }
+        .u-frac span:last-child { display: block; padding: 0 2px; line-height: 1.1; }
+    </style>
+
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbxtTXVCldY14bo9gzYRpexWPvauqlViFQBbZ0_GYrtyAhl5JXK9xFBg12fQ09k9mm4W/exec";
+
+        const frac = (n, d) => `<span class="u-frac"><span>${n}</span><span>${d}</span></span>`;
+
+        const questions = [
+            {
+                id: 1, type: "abcd",
+                text: "1. Dany jest trójkąt prostokątny o przyprostokątnych długości 5 oraz 12. Kąt α leży naprzeciwko krótszej przyprostokątnej. Wówczas sin α jest równy:",
+                options: [frac(5,12), frac(5,13), frac(12,13), frac(13,5)],
+                correct: 1
+            },
+            {
+                id: 2, type: "fraction",
+                text: "2. W trójkącie prostokątnym przeciwprostokątna ma długość 10, a jedna z przyprostokątnych ma długość 6. Kąt β jest kątem ostrym przyległym do przyprostokątnej o długości 6. Oblicz tg β (zapisz ułamek nieskracalny):",
+                correctNum: "4", correctDen: "3"
+            },
+            {
+                id: 3, type: "fraction",
+                text: `3. Kąt α jest ostry oraz sin α = ${frac(3,5)}. Oblicz cos α:`,
+                correctNum: "4", correctDen: "5"
+            },
+            {
+                id: 4, type: "abcd",
+                text: `4. Kąt α jest ostry oraz sin α = ${frac(1,3)}. Wartość wyrażenia 3 - cos² α jest równa:`,
+                options: [frac(19,9), frac(20,9), frac(26,9), frac(8,9)],
+                correct: 0
+            },
+            {
+                id: 5, type: "abcd",
+                text: `5. Kąt α jest ostry oraz tg α = 2. Wówczas wartość wyrażenia ${frac("3 sin α - cos α", "sin α + cos α")} jest równa:`,
+                options: [frac(5,3), "1", frac(7,3), "2"],
+                correct: 0
+            },
+            {
+                id: 6, type: "fraction",
+                text: `6. Kąt α jest ostry oraz cos α = ${frac(5,13)}. Oblicz tg α:`,
+                correctNum: "12", correctDen: "5"
+            },
+            {
+                id: 7, type: "abcd",
+                text: "7. Wartość wyrażenia sin 150° + cos 120° jest równa:",
+                options: ["1", "0", frac("√3 - 1", 2), "-" + frac(1,2)],
+                correct: 1
+            },
+            {
+                id: 8, type: "abcd",
+                text: `8. Kąt α jest rozwarty (90° < α < 180°) oraz sin α = ${frac(4,5)}. Wówczas cos α jest równy:`,
+                options: [frac(3,5), "-" + frac(3,5), frac(1,5), "-" + frac(1,5)],
+                correct: 1
+            },
+            {
+                id: 9, type: "abcd",
+                text: "9. Prosta k jest nachylona do osi OX pod kątem α = 60° i przechodzi przez punkt P(0, -2). Równanie tej prostej ma postać:",
+                options: [`y = ${frac("√3",3)}x - 2`, "y = √3x - 2", "y = -√3x - 2", `y = ${frac(1,2)}x - 2`],
+                correct: 1
+            },
+            {
+                id: 10, type: "number",
+                text: "10. W trójkącie ABC boki mają długość |AB| = 8 oraz |AC| = 6, a kąt między nimi ma miarę 30°. Oblicz pole tego trójkąta:",
+                correctVal: "12"
+            }
+        ];
+
+        let studentName = "";
+        let timeLeft = 20 * 60; // 20 minut w sekundach
+        let timerInterval = null;
+        let startTime = null;
+
+        function startQuiz() {
+            const input = document.getElementById("student-name").value.trim();
+            if (input.length < 3) {
+                document.getElementById("name-error").style.display = "block";
+                return;
+            }
+            studentName = input;
+            document.getElementById("display-student").innerText = "Uczeń: " + studentName;
+            document.getElementById("quiz-start").style.display = "none";
+            document.getElementById("quiz-body").style.display = "block";
+
+            renderQuestions();
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            timeLeft--;
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            document.getElementById("timer").innerText = `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+            if (timeLeft <= 0) {
+                finishQuiz();
+            }
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById("questions-container");
+            container.innerHTML = questions.map(q => {
+                let inputHtml = "";
+                if (q.type === "abcd") {
+                    const letters = ["A", "B", "C", "D"];
+                    inputHtml = q.options.map((opt, i) => `
+                        <label class="opt-label">
+                            <input type="radio" name="q_${q.id}" value="${i}"> <strong>${letters[i]}.</strong> ${opt}
+                        </label>
+                    `).join("");
+                } else if (q.type === "fraction") {
+                    inputHtml = `
+                        <div style="margin-top: 0.5rem;">
+                            Wynik: 
+                            <div class="frac-input-wrap">
+                                <input type="text" id="q_${q.id}_num" placeholder="licznik">
+                                <div class="frac-line"></div>
+                                <input type="text" id="q_${q.id}_den" placeholder="mianownik">
+                            </div>
+                        </div>
+                    `;
+                } else if (q.type === "number") {
+                    inputHtml = `
+                        <div style="margin-top: 0.5rem;">
+                            Wynik: <input type="text" id="q_${q.id}_val" class="num-input" placeholder="wpisz">
+                        </div>
+                    `;
+                }
+                return `<div class="q-box"><div class="q-title">${q.text}</div>${inputHtml}</div>`;
+            }).join("");
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            const elapsedSec = Math.round((Date.now() - startTime) / 1000);
+            const elapsedStr = `${Math.floor(elapsedSec / 60)} min ${elapsedSec % 60} sek`;
+
+            let score = 0;
+            let details = [];
+            let reviewHtml = "";
+
+            questions.forEach(q => {
+                let isCorrect = false;
+                let userAnsStr = "brak";
+
+                if (q.type === "abcd") {
+                    const checked = document.querySelector(`input[name="q_${q.id}"]:checked`);
+                    if (checked) {
+                        const val = parseInt(checked.value);
+                        userAnsStr = ["A", "B", "C", "D"][val];
+                        if (val === q.correct) isCorrect = true;
+                    }
+                } else if (q.type === "fraction") {
+                    const num = document.getElementById(`q_${q.id}_num`).value.trim();
+                    const den = document.getElementById(`q_${q.id}_den`).value.trim();
+                    userAnsStr = (num || den) ? `${num}/${den}` : "brak";
+                    if (num === q.correctNum && den === q.correctDen) isCorrect = true;
+                } else if (q.type === "number") {
+                    const val = document.getElementById(`q_${q.id}_val`).value.trim();
+                    userAnsStr = val || "brak";
+                    if (val === q.correctVal) isCorrect = true;
+                }
+
+                if (isCorrect) score++;
+                details.push(`Z${q.id}:${userAnsStr}(${isCorrect ? "OK" : "BŁĄD"})`);
+
+                reviewHtml += `
+                    <div style="padding: 0.6rem; margin-bottom: 0.4rem; border-radius: 6px; background: ${isCorrect ? "#dcfce7" : "#fee2e2"}; color: #0f172a;">
+                        <strong>Zadanie ${q.id}:</strong> Twoja odpowiedź: <code>${userAnsStr}</code> — ${isCorrect ? "✅ Poprawnie" : "❌ Błędnie"}
+                    </div>
+                `;
+            });
+
+            document.getElementById("quiz-body").style.display = "none";
+            document.getElementById("quiz-result").style.display = "block";
+            document.getElementById("result-score").innerText = `Twój wynik: ${score} / ${questions.length} pkt (${score * 10}%)`;
+            document.getElementById("result-review").innerHTML = reviewHtml;
+
+            fetch(API_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    uczen: studentName,
+                    dzial: "Trygonometria",
+                    wynik: `${score}/${questions.length} (${score * 10}%)`,
+                    czas: elapsedStr,
+                    szczegoly: details.join(", ")
+                })
+            }).then(() => {
+                document.getElementById("save-status").innerText = "✅ Wynik został zapisany i przesłany do nauczyciela.";
+            }).catch(() => {
+                document.getElementById("save-status").innerText = "⚠️ Błąd połączenia z bazą wyników. Zrób zrzut ekranu.";
+            });
+        }
+    </script>
 
 </body>
 </html>

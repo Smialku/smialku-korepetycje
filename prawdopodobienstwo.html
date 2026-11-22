@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rachunek Prawdopodobieństwa – Śmiałku Korepetycje</title>
+    <title>Prawdopodobieństwo (Rozszerzenie) – Śmiałku Korepetycje</title>
     <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
@@ -17,6 +17,7 @@
                 <a href="o-mnie.html">O mnie</a>
                 <a href="index.html" class="active">Materiały</a>
                 <a href="analizy.html">Analizy</a>
+                <a href="wyniki.html">Panel nauczyciela</a>
             </nav>
         </div>
     </header>
@@ -28,22 +29,290 @@
         </div>
 
         <section class="card">
-            <h2>19. Rachunek Prawdopodobieństwa</h2>
-            <div class="formula">P(A) = |A| / |Ω|</div>
+            <h2>Rachunek prawdopodobieństwa – Poziom Rozszerzony</h2>
+            <div class="formula">P(A | B) = P(A ∩ B) / P(B) &nbsp;&nbsp;|&nbsp;&nbsp; P_n(k) = (n po k) · p^k · q^(n-k)</div>
             <ul style="margin-top: 1rem; padding-left: 1.2rem;">
-                <li>Założenia: <code>0 ≤ P(A) ≤ 1</code></li>
-                <li>Zdarzenie przeciwne: <code>P(A') = 1 - P(A)</code></li>
+                <li>Prawdopodobieństwo klasyczne i własności prawdopodobieństwa.</li>
+                <li style="margin-top: 0.4rem;">Prawdopodobieństwo warunkowe, całkowite oraz schemat Bernoulliego.</li>
             </ul>
         </section>
 
-        <section class="card intro-card">
-            <h3>Materiały autorskie</h3>
-            <div class="placeholder-box">
-                📝 Sekcja w przygotowaniu.
+        <!-- ======================================================= -->
+        <!-- QUIZ: PRAWDOPODOBIEŃSTWO ROZSZERZONE (8 ZADAŃ / 50 MIN) -->
+        <!-- ======================================================= -->
+        <section class="card" id="quiz-section" style="margin-top: 2rem; border: 2px solid #7c3aed;">
+            
+            <!-- EKRAN 1: STARTOWY -->
+            <div id="quiz-start" style="text-align: center; padding: 1rem;">
+                <div style="display: inline-block; background: #f3e8ff; color: #6d28d9; border: 1px solid #a855f7; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.6rem; text-transform: uppercase;">
+                    🎓 Poziom Rozszerzony
+                </div>
+                <h2 style="color: #6d28d9; margin-top: 0;">📝 Quiz sprawdzający: Rachunek prawdopodobieństwa</h2>
+                <p style="color: #334155; max-width: 620px; margin: 0.8rem auto; line-height: 1.6;">
+                    Zestaw obejmuje 8 rozbudowanych zadań (łącznie 13 odpowiedzi do obliczenia) z prawdopodobieństwa klasycznego, warunkowego, całkowitego oraz schematu Bernoulliego.
+                </p>
+
+                <!-- Informacje o teście -->
+                <div style="background: #f1f5f9; padding: 1rem; border-radius: 8px; max-width: 500px; margin: 1.2rem auto; text-align: left; font-size: 0.95rem; color: #0f172a;">
+                    <p style="margin: 0.3rem 0;">⏱️ <strong>Czas na rozwiązanie:</strong> 50 minut</p>
+                    <p style="margin: 0.3rem 0;">📊 <strong>Punktacja:</strong> 13 punktów (każdy podpunkt oceniany oddzielnie)</p>
+                    <p style="margin: 0.3rem 0;">⚠️ <strong>Zasada zapisu:</strong> Ułamki wpisuj w postaci <strong>nieskracalnej</strong> (licznik / mianownik).</p>
+                </div>
+
+                <!-- Plan działania dla ucznia -->
+                <div style="background: #faf5ff; border-left: 4px solid #7c3aed; padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; max-width: 500px; margin: 1.2rem auto; text-align: left; font-size: 0.95rem; color: #0f172a;">
+                    <p style="margin: 0 0 0.5rem 0; font-weight: 700; color: #5b21b6;">📋 Plan działania przed startem:</p>
+                    <ol style="margin: 0; padding-left: 1.3rem; line-height: 1.6; color: #334155;">
+                        <li>Przygotuj <strong>czyste kartki, długopis i kalkulator prosty</strong>.</li>
+                        <li>Połóż obok <strong>Wybrane wzory matematyczne CKE</strong> (dział Rachunek prawdopodobieństwa).</li>
+                        <li>Zarezerwuj 50 minut spokoju — po starcie zegara nie można zatrzymać.</li>
+                        <li>Wpisz swoje imię i nazwisko poniżej i rozpocznij quiz.</li>
+                    </ol>
+                </div>
+
+                <div style="margin: 1.5rem auto; max-width: 320px;">
+                    <label for="student-name" style="display: block; font-weight: 600; margin-bottom: 0.4rem; color: #0f172a;">Wpisz swoje imię i nazwisko:</label>
+                    <input type="text" id="student-name" placeholder="np. Tymek" style="width: 100%; padding: 0.7rem; border: 2px solid #cbd5e1; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                    <p id="name-error" style="color: #dc2626; font-size: 0.85rem; display: none; margin-top: 0.4rem;">Podaj imię i nazwisko przed rozpoczęciem!</p>
+                </div>
+
+                <button onclick="startQuiz()" style="background: #7c3aed; color: white; border: none; padding: 0.8rem 2rem; font-size: 1.05rem; font-weight: 600; border-radius: 8px; cursor: pointer;">
+                    Rozpocznij quiz
+                </button>
             </div>
+
+            <!-- EKRAN 2: PYTANIA I TIMER -->
+            <div id="quiz-body" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; margin-bottom: 1.5rem; position: sticky; top: 10px; z-index: 10;">
+                    <span id="display-student" style="font-weight: 600;">Uczeń: -</span>
+                    <span style="font-size: 1.1rem; font-weight: 700; color: #c084fc;">⏱️ Pozostały czas: <span id="timer">50:00</span></span>
+                </div>
+
+                <div id="questions-container"></div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="finishQuiz()" style="background: #16a34a; color: white; border: none; padding: 0.9rem 2.2rem; font-size: 1.1rem; font-weight: 600; border-radius: 8px; cursor: pointer;">
+                        Zakończ i wyślij odpowiedzi
+                    </button>
+                </div>
+            </div>
+
+            <!-- EKRAN 3: PODSUMOWANIE -->
+            <div id="quiz-result" style="display: none; text-align: center; padding: 1.5rem;">
+                <h2 style="color: #0f172a; margin-top: 0;">Quiz zakończony!</h2>
+                <p id="result-score" style="font-size: 1.5rem; font-weight: 700; color: #7c3aed; margin: 1rem 0;"></p>
+                <p id="save-status" style="color: #64748b; font-size: 0.95rem;">Zapisywanie wyniku...</p>
+                <div id="result-review" style="text-align: left; margin-top: 1.5rem;"></div>
+            </div>
+
         </section>
 
     </main>
+
+    <style>
+        .q-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; margin-bottom: 1.3rem; }
+        .q-title { font-weight: 600; color: #0f172a; margin-bottom: 0.8rem; line-height: 1.55; }
+        .sub-item { background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.7rem 0.9rem; margin-top: 0.6rem; }
+        .frac-input-wrap { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin-left: 0.5rem; }
+        .frac-input-wrap input { width: 70px; text-align: center; padding: 0.3rem; border: 2px solid #94a3b8; border-radius: 4px; font-weight: bold; font-size: 1rem; }
+        .frac-line { width: 80px; height: 2px; background: #0f172a; margin: 4px 0; }
+        .num-input { width: 95px; padding: 0.4rem; border: 2px solid #94a3b8; border-radius: 6px; font-size: 1rem; font-weight: bold; text-align: center; }
+        .u-frac { display: inline-block; text-align: center; vertical-align: middle; margin: 0 2px; }
+        .u-frac span:first-child { border-bottom: 1px solid currentColor; display: block; padding: 0 2px; line-height: 1.1; }
+        .u-frac span:last-child { display: block; padding: 0 2px; line-height: 1.1; }
+    </style>
+
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbxtTXVCldY14bo9gzYRpexWPvauqlViFQBbZ0_GYrtyAhl5JXK9xFBg12fQ09k9mm4W/exec";
+        const frac = (n, d) => `<span class="u-frac"><span>${n}</span><span>${d}</span></span>`;
+
+        const tasks = [
+            {
+                id: 1,
+                text: "Zadanie 1. Dane są dwa zbiory liczb: A = {1, 2, 3, 4} oraz B = {5, 6, 7, 8}. Z każdego zbioru losujemy po jednej liczbie, tworząc uporządkowaną parę (a, b), gdzie a ∈ A i b ∈ B. Oblicz prawdopodobieństwo zdarzenia:",
+                parts: [
+                    { code: "1a", label: "a) iloczyn wylosowanych liczb jest nieparzysty:", type: "fraction", num: "1", den: "4" },
+                    { code: "1b", label: "b) suma wylosowanych liczb jest podzielna przez 4:", type: "fraction", num: "1", den: "4" },
+                    { code: "1c", label: "c) różnica między liczbą wylosowaną ze zbioru B a liczbą wylosowaną ze zbioru A jest większa od 4:", type: "fraction", num: "3", den: "8" }
+                ]
+            },
+            {
+                id: 2,
+                text: "Zadanie 2. Z talii 52 kart losujemy kolejno bez zwracania dwa razy po jednej karcie. Oblicz prawdopodobieństwo zdarzenia:",
+                parts: [
+                    { code: "2a", label: "a) pierwsza z wylosowanych kart jest treflem, a druga jest królem:", type: "fraction", num: "1", den: "52" },
+                    { code: "2b", label: "b) co najmniej jedna z wylosowanych kart jest treflem lub królem:", type: "fraction", num: "49", den: "68" },
+                    { code: "2c", label: "c) obie wylosowane karty są czarne (pik lub trefl), przy czym żadna z nich nie jest królem ani asem:", type: "fraction", num: "77", den: "442" }
+                ]
+            },
+            {
+                id: 3,
+                text: "Zadanie 3. Rzucamy trzykrotnie symetryczną monetą. Oblicz prawdopodobieństwo zdarzenia polegającego na tym, że w tych trzech rzutach:",
+                parts: [
+                    { code: "3a", label: "a) orzeł wypadnie dokładnie dwa razy:", type: "fraction", num: "3", den: "8" },
+                    { code: "3b", label: "b) reszka wypadnie co najmniej dwa razy:", type: "fraction", num: "1", den: "2" }
+                ]
+            },
+            {
+                id: 4,
+                text: "Zadanie 4. W dwóch pudełkach umieszczono po pięć kul: w pierwszym pudełku są 2 kule białe i 3 czerwone, a w drugim pudełku – 1 kula biała i 4 czerwone. Z pierwszego pudełka losujemy jedną kulę i bez oglądania wkładamy ją do drugiego pudełka. Następnie losujemy jedną kulę z drugiego pudełka. Oblicz prawdopodobieństwo wylosowania kuli białej z drugiego pudełka.",
+                parts: [
+                    { code: "4", label: "P(B) =", type: "fraction", num: "7", den: "30" }
+                ]
+            },
+            {
+                id: 5,
+                text: `Zadanie 5. W pudełku umieszczono n kul (n ≥ 3), wśród których dokładnie 2 kule są czarne, a pozostałe są białe. Z tego pudełka losujemy jedną kulę i odkładamy ją na bok. Jeżeli wylosowana kula jest biała, to do pudełka wrzucamy kulę czarną, a gdy wylosowana kula jest czarna – wrzucamy kulę białą. Po takiej zmianie prawdopodobieństwo wylosowania kuli białej z tego pudełka jest równe ${frac(37,50)}. Oblicz n.`,
+                parts: [
+                    { code: "5", label: "n =", type: "number", val: "10" }
+                ]
+            },
+            {
+                id: 6,
+                text: "Zadanie 6. Ze zbioru wszystkich liczb naturalnych czterocyfrowych losujemy jedną liczbę. Oblicz prawdopodobieństwo zdarzenia polegającego na tym, że wylosowana liczba jest podzielna przez 15, jeśli wiadomo, że jest ona podzielna przez 18.",
+                parts: [
+                    { code: "6", label: "P(A | B) =", type: "fraction", num: "1", den: "5" }
+                ]
+            },
+            {
+                id: 7,
+                text: "Zadanie 7. Uczniowie zaobserwowali, że gdy szkolny autobus prowadzi kierowca A, spóźnienie zdarza się w 5% jego kursów, gdy prowadzi kierowca B – w 20%, a gdy kierowca C – w 50%. W ciągu 5-dniowego tygodnia nauki dwa razy prowadzi kierowca A, dwa razy kierowca B i jeden raz kierowca C. Oblicz prawdopodobieństwo spóźnienia się autobusu w losowo wybrany dzień nauki.",
+                parts: [
+                    { code: "7", label: "P(S) =", type: "fraction", num: "1", den: "5" }
+                ]
+            },
+            {
+                id: 8,
+                text: `Zadanie 8. Tomek i Romek postanowili rozegrać między sobą pięć partii szachów. Prawdopodobieństwo wygrania pojedynczej partii przez Tomka jest równe ${frac(1,4)}. Oblicz prawdopodobieństwo wygrania przez Tomka co najmniej czterech z pięciu partii.`,
+                parts: [
+                    { code: "8", label: "P =", type: "fraction", num: "1", den: "64" }
+                ]
+            }
+        ];
+
+        let studentName = "";
+        let timeLeft = 50 * 60; // 50 minut w sekundach
+        let timerInterval = null;
+        let startTime = null;
+
+        function startQuiz() {
+            const input = document.getElementById("student-name").value.trim();
+            if (input.length < 3) {
+                document.getElementById("name-error").style.display = "block";
+                return;
+            }
+            studentName = input;
+            document.getElementById("display-student").innerText = "Uczeń: " + studentName;
+            document.getElementById("quiz-start").style.display = "none";
+            document.getElementById("quiz-body").style.display = "block";
+
+            renderQuestions();
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function updateTimer() {
+            timeLeft--;
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            document.getElementById("timer").innerText = `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+            if (timeLeft <= 0) {
+                finishQuiz();
+            }
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById("questions-container");
+            container.innerHTML = tasks.map(t => {
+                const partsHtml = t.parts.map(p => {
+                    if (p.type === "fraction") {
+                        return `
+                            <div class="sub-item">
+                                <span>${p.label}</span>
+                                <div class="frac-input-wrap">
+                                    <input type="text" id="ans_${p.code}_num" placeholder="licznik">
+                                    <div class="frac-line"></div>
+                                    <input type="text" id="ans_${p.code}_den" placeholder="mianownik">
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div class="sub-item">
+                                <span>${p.label}</span>
+                                <input type="text" id="ans_${p.code}_val" class="num-input" placeholder="wpisz">
+                            </div>
+                        `;
+                    }
+                }).join("");
+
+                return `<div class="q-box"><div class="q-title">${t.text}</div>${partsHtml}</div>`;
+            }).join("");
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            const elapsedSec = Math.round((Date.now() - startTime) / 1000);
+            const elapsedStr = `${Math.floor(elapsedSec / 60)} min ${elapsedSec % 60} sek`;
+
+            let score = 0;
+            let totalParts = 0;
+            let details = [];
+            let reviewHtml = "";
+
+            tasks.forEach(t => {
+                t.parts.forEach(p => {
+                    totalParts++;
+                    let isCorrect = false;
+                    let userAnsStr = "brak";
+
+                    if (p.type === "fraction") {
+                        const num = document.getElementById(`ans_${p.code}_num`).value.trim();
+                        const den = document.getElementById(`ans_${p.code}_den`).value.trim();
+                        userAnsStr = (num || den) ? `${num}/${den}` : "brak";
+                        if (num === p.num && den === p.den) isCorrect = true;
+                    } else {
+                        const val = document.getElementById(`ans_${p.code}_val`).value.trim();
+                        userAnsStr = val || "brak";
+                        if (val === p.val) isCorrect = true;
+                    }
+
+                    if (isCorrect) score++;
+                    details.push(`Z${p.code}:${userAnsStr}(${isCorrect ? "OK" : "BŁĄD"})`);
+
+                    reviewHtml += `
+                        <div style="padding: 0.55rem 0.8rem; margin-bottom: 0.4rem; border-radius: 6px; background: ${isCorrect ? "#dcfce7" : "#fee2e2"}; color: #0f172a;">
+                            <strong>Zadanie ${p.code}:</strong> Twoja odpowiedź: <code>${userAnsStr}</code> — ${isCorrect ? "✅ Poprawnie" : "❌ Błędnie"}
+                        </div>
+                    `;
+                });
+            });
+
+            const pct = Math.round((score / totalParts) * 100);
+
+            document.getElementById("quiz-body").style.display = "none";
+            document.getElementById("quiz-result").style.display = "block";
+            document.getElementById("result-score").innerText = `Twój wynik: ${score} / ${totalParts} pkt (${pct}%)`;
+            document.getElementById("result-review").innerHTML = reviewHtml;
+
+            fetch(API_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    uczen: studentName,
+                    dzial: "Prawdopodobieństwo (Rozszerzenie)",
+                    wynik: `${score}/${totalParts} (${pct}%)`,
+                    czas: elapsedStr,
+                    szczegoly: details.join(", ")
+                })
+            }).then(() => {
+                document.getElementById("save-status").innerText = "✅ Wynik został zapisany i przesłany do nauczyciela.";
+            }).catch(() => {
+                document.getElementById("save-status").innerText = "⚠️ Błąd połączenia z bazą wyników. Zrób zrzut ekranu.";
+            });
+        }
+    </script>
 
 </body>
 </html>

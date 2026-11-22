@@ -51,7 +51,7 @@
 
                 <!-- Informacje o teście -->
                 <div style="background: #f1f5f9; padding: 1rem; border-radius: 8px; max-width: 480px; margin: 1.2rem auto; text-align: left; font-size: 0.95rem; color: #0f172a;">
-                    <p style="margin: 0.3rem 0;">⏱️ <strong>Czas na rozwiązanie:</strong> 20 minut</p>
+                    <p style="margin: 0.3rem 0;">⏱️ <strong>Czas na rozwiązanie:</strong> 30 minut</p>
                     <p style="margin: 0.3rem 0;">📊 <strong>Liczba zadań:</strong> 10 (zamknięte ABCD oraz wpisanie ułamka/liczby)</p>
                     <p style="margin: 0.3rem 0;">⚠️ <strong>Uwaga:</strong> Po upływie czasu quiz zakończy się automatycznie.</p>
                 </div>
@@ -82,7 +82,7 @@
             <div id="quiz-body" style="display: none;">
                 <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; color: white; padding: 0.8rem 1.2rem; border-radius: 8px; margin-bottom: 1.5rem; position: sticky; top: 10px; z-index: 10;">
                     <span id="display-student" style="font-weight: 600;">Uczeń: -</span>
-                    <span style="font-size: 1.1rem; font-weight: 700; color: #38bdf8;">⏱️ Pozostały czas: <span id="timer">20:00</span></span>
+                    <span style="font-size: 1.1rem; font-weight: 700; color: #38bdf8;">⏱️ Pozostały czas: <span id="timer">30:00</span></span>
                 </div>
 
                 <div id="questions-container"></div>
@@ -185,7 +185,7 @@
         ];
 
         let studentName = "";
-        let timeLeft = 20 * 60; // 20 minut w sekundach
+        let timeLeft = 30 * 60; // 30 minut w sekundach
         let timerInterval = null;
         let startTime = null;
 
